@@ -1,5 +1,12 @@
 # Java NIO
-[TOC]
+<!-- TOC -->
+
+- [Java NIO](#java-nio)
+    - [1. Channel：通道。](#1-channel%E9%80%9A%E9%81%93)
+    - [2. Buffer：缓冲区](#2-buffer%E7%BC%93%E5%86%B2%E5%8C%BA)
+    - [3. Selector：选择器](#3-selector%E9%80%89%E6%8B%A9%E5%99%A8)
+
+<!-- /TOC -->
 ## 1. Channel：通道。  
 可类比于传统IO中读取一个文件的内容使用多个stream。
 ```Java
