@@ -11,6 +11,8 @@
 7. git push -u origin master    #推送本地仓库的代码到github远程仓库
 ```
 
+![本地项目上传到github](./img/本地项目上传到github.png)
+
 在执行第6步时出错：  
 >E:\LanTest\GitRepository\sb_begin (master -> origin)  
 >$ git pull origin master  
