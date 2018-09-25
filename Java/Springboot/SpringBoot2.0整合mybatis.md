@@ -28,6 +28,17 @@
     <artifactId>mybatis-generator-core</artifactId>
     <version>1.3.2</version>
 </dependency>
+<!-- mybatis-pageHelper分页插件 -->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>1.2.5</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.7</version>
+</dependency>
 ```
 2. 配置数据库连接：`application.properties` 
 ```yml
@@ -36,6 +47,14 @@ spring.datasource.url=jdbc:mysql://localhost:3306/mysql?useUnicode=true&characte
 spring.datasource.username=root
 spring.datasource.password=111111
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+# page-helper配置
+logging.level.com.ethan.pagehelper.dao=DEBUG
+pagehelper.helperDialect=mysql
+pagehelper.reasonable=true
+pagehelper.supportMethodsArguments=true
+pagehelper.params=count=countSql
+pagehelper.page-size-zero=true
 ```
 3. mybatis逆向生成代码配置：`generatorConfig.xml`  
 ```xml
@@ -227,4 +246,25 @@ mybatis.mapper-locations=classpath:com/ethan/pagehelper/mapper/*.xml
         </plugin>
     </plugins>
 </build>
+```
+
+最终完整的 `application.properties` 配置如下： 
+```yml
+# 数据库连接配置
+spring.datasource.url=jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&allowMultiQueries=true
+spring.datasource.username=root
+spring.datasource.password=111111
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+# 配置mapper文件扫描路径
+mybatis.mapper-locations=classpath:mapper/*.xml
+#mybatis.mapper-locations=classpath:com/ethan/pagehelper/mapper/*.xml
+
+# page-helper配置
+logging.level.com.ethan.pagehelper.dao=DEBUG
+pagehelper.helperDialect=mysql
+pagehelper.reasonable=true
+pagehelper.supportMethodsArguments=true
+pagehelper.params=count=countSql
+pagehelper.page-size-zero=true
 ```
