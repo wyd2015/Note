@@ -54,6 +54,7 @@ public class App(){
 ```
 
 2. 直接使用`@SpringBootApplication`注解，等同于`@EnableAutoConfiguration + @ComponentScan("com....")`，但使用`@SpringBootApplication`注解不用在额外指定controller所在路径，它默认扫描该类所在的同级包（包含子包）。
+>可通过basePackages等属性来细粒度定制@ComponentScan自动扫描范围，如果不指定，默认Spring框架会从声明@ComponentScan的类所在的package进行扫描。因此，SpringBoot的启动类最好放在root package下。
 ```java
 @SpringBootApplication
 public class App(){
@@ -62,3 +63,23 @@ public class App(){
     }
 }
 ```
+
+3. `@EnableAutoConfiguration`，借助@Import支持，收集和注册特定场景相关的bean定义，将所有符合自动配置条件的bean定义加载到IOC容器。  
+借助`@EnableAutoConfigurationImportSelector`，@EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置都加载到当前SpringBoot创建并使用的IOC容器。  
+借助Spring框架原有的一个工具类：`SpringFactoriesLoader`的支持，@EnableAutoConfiguration可以智能的自动进行配置。  
+```java
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import(AutoConfigurationImportSelector.class)
+public @interface EnableAutoConfiguration {}
+```
+
+![配置](img/enableAutoConfiguration.png)  
+
+@EnableAutoConfiguration得以生效的关键组件图：  
+
+在`spring-boot-autoconfigure-1.5.2.RELEASE.jar`中，@EnableAutoConfiguration自动配置过程：  
+>从classpath中搜寻所有的 `META-INF/spring.factories` 配置文件，并将其中的 `org.springframework.boot.autoconfiguration.EnableAutoConfiguration` 对应的配置项通过`反射`实例化为对应的标注了@Configuration的 `JavaConfig`形式的IOC容器配置类，然后汇总为一个加载到IOC容器中。
