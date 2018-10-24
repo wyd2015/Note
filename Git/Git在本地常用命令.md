@@ -116,7 +116,7 @@ git push origin:branchName  #删除远程分支branchName
 git push origin --delete newBranch  #删除远程分支newBranch
 
 git branch -d test  #删除本地test分支
-git branch -d test  #强制删除本地test分支
+git branch -D test  #强制删除本地test分支
 
 git branch --set-upstream dev origin/dev    #将本地dev分支与远程dev分支间建立连接
 ```
