@@ -1,4 +1,6 @@
 # vue-cli生成的assets与static目录的区别
+
+
 1. **assets**：在项目编译过程中会被webpack处理解析为模块依赖，只支持相对路径的形式。如
 ```html
 <img src="./logo.png">
@@ -8,7 +10,8 @@
     background: url(./logo.png);
 }
 ```
-以上`./logo.png`均是使用的相对路径，将有webpack解析为模块依赖。
+以上`./logo.png`均是使用的相对路径，将有webpack解析为模块依赖。  
+
 2. **static**：这个目录就是存放第三方文件的地方，里面的文件不会被webpack解析、处理。最终build时会被直接复制到最终的打包目录(dist/static)下。必须使用绝对路径引用这些没有被webpack解析过的文件。这是通过`config.js`文件中的`build.assetsPublic`和`build.assetsSubDirectory`链接来确定的。任何放在static目录下的文件需要以绝对路径的形式引用：/static/filename.png
 
 ## 用js动态加载assets或者图片时出现404状态码
