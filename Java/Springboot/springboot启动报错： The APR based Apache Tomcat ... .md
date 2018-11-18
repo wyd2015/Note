@@ -21,8 +21,8 @@
 1. Tomcat可以使用APR提供优越的可伸缩性、性能，以便更好的与本地服务器技术进行集成；
 2. 提升对ssl的处理效率。
 
-文件下载位置：http://archive.apache.org/dist/tomcat/tomcat-connectors/native/1.2.14/binaries/
-![tcnative](img/tcnative.png)
+点击下载 [tomcat-native-1.2.14-ocsp-win32-bin.zip](http://archive.apache.org/dist/tomcat/tomcat-connectors/native/1.2.14/binaries/tomcat-native-1.2.14-ocsp-win32-bin.zip)
+![](img/tcnative.png)
 
 **使用方法**：  
 下载后解压两个文件到 `C:\Windows\System32` 目录下，然后重新启动项目就可以了！
