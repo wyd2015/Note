@@ -15,3 +15,24 @@ public class FtpFileUtil {
   }
 }
 ```
+
+## 在使用@Value注解时，可以通过`:`指定默认值
+```java
+@Service
+@Slf4j
+public class UserService {
+    @Autowired
+    private SysUserDAO sysUserDAO;
+    
+    @Value("${login.password:}")//使用这种注解，如果未在配置文件中赋值，则默认将该值置为空字符串""
+    private String password;
+
+    @Value("${login.password}")//使用这种注解，如果未在配置文件中赋值，则默认讲该值置为Null
+    private String password;
+}
+```
+这里引用application.properties配置文件里配的用户默认密码
+```yml
+#自定义登录系统初始密码
+login.password=123456
+```
