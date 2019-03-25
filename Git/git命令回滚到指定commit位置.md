@@ -1,3 +1,9 @@
+---
+title: '''Git回滚到指定commit位置'''
+date: 2018-10-09 17:39:51
+categories: Git
+tags: git
+---
 # git命令回滚到指定commit位置
 
 回滚到指定版本，接下来会有两种情况：  

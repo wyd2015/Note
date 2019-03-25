@@ -1,3 +1,9 @@
+---
+title: '''Git新建工程'''
+date: 2018-10-13 17:39:51
+categories: Git
+tags: git
+---
 # 使用Git新建工程
 ## 一、直接在本地初始化后推送到远程仓库
 ```yml
