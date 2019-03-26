@@ -1,3 +1,9 @@
+---
+title: '''Git报错 HEAD detached at ...'''
+date: 2018-11-09 17:39:51
+categories: Git
+tags: git
+---
 # checkout代码后进行pull操作，提示HEAD detached at
 
 今天切换项目分支，把代码切换到一个tj分支，checkout后没注意，等把手里的问题解决,提交代码到本地仓库，  

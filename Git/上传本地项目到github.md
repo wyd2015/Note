@@ -1,3 +1,9 @@
+---
+title: '''Git传本地项目'''
+date: 2018-10-13 17:39:51
+categories: Git
+tags: git
+---
 # 上传本地项目到github
 
 **步骤如下**：
