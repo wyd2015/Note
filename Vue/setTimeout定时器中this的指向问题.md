@@ -37,7 +37,7 @@ Tag: vue
 ```
 
 【问题原因】  
->当在vue中使用定时器，并在定时器内部的function里直接使用this时，由于setTimeout函数调用的代码运行在与所在函数完全分离的执行环境上，这就使得this所指向的不再是`当前vue`组件，而是浏览器的`window`对象。this的指向发生变化，自然也就不然改变`excelLoading`的值。
+>使用function定义的函数，this的指向随着调用环境的变化而变化的，而箭头函数中的this指向是固定不变的，一直指向的是定义函数的环境。
 
 【解决办法】  
 1. 在setTimeout定时器内使用`箭头函数`代替`function`关键字：  
