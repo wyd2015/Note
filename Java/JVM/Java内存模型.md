@@ -61,6 +61,8 @@ JVM内存区域与JMM并不是同一个概念，
 - 总线加锁：粗粒度控制，会降低CPU的吞吐量；
 - 缓存一致性协议（MESI）：当CPU在cache memory中操作数据时，如果该数据是共享变量，数据在cache读到寄存器中进行修改，并更新内存数据；
 此时会使用`cache line（信号线）`将其它CPU缓存中的数据置为无效，其他CPU就会从主存中去读取数据。
+>a. 读操作：不做任何事情，把cache中的数据读到寄存器；  
+b. 写操作：发出信号通知其它的CPU，将该共享变量的 `cache line` 置为无效，其它CPU要访问这个变量时，就必须从内存中去获取最新的值。
 
 ## 5.2 Java线程与硬件处理器
 ![java-cpu](img/Java&CPU.png)
@@ -89,6 +91,14 @@ JVM内存区域与JMM并不是同一个概念，
 要解决共享对象竞争问题，可以使用`synchronization`关键字来修饰代码块。  
 >synchronization代码块可以保证同一时刻只能有一个线程操作共享对象；  
 synchronization代码块也可保证代码块中的所有变量都会从主存中读取，当线程退出代码块时，对所有变量的更新将会flush到主存，不管这些变量是不是volatile类型的。
+
+
+### 5.3.3 volatile与synchronized区别
+1. 使用上的区别：volatile只能修饰变量，synchronized只能修饰方法和代码块；
+2. 对原子性的保证：volatile不能保证原子性，synchronized可以保证原子性
+3. 对可见性的保证：都可以保证可见性，但实现原理不同。volatile对变量加了 `Lock`，synchronized使用 `monitorEnter` 和 `monitorExit`对方法或代码块加锁。
+4. 对有序性的保证：都可以保证有序性，但synchronized代价太大：并发执行变成串行。
+5. 其它：synchronized会引起阻塞，但volatile不会引起阻塞。
 
 ## 5.4 支撑Java内存模型的基础原理
 ### 5.4.1 指令重排序
