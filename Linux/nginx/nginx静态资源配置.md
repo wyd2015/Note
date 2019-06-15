@@ -1,5 +1,5 @@
 ---
-title: 'Nginx作为代理服务器和文件服务器的配置'
+title: 'Nginx静态资源配置'
 Date: 2019-03-26 00:57:42
 Tag: nginx
 ---
