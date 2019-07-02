@@ -1,5 +1,5 @@
 ---
-title: 'el-update一次请求上传多张图片'
+title: 'el-upload一次请求上传多张图片'
 data: 2019-07-01 19:32:57
 categories: 'vue'
 tag: 'vue', 'el-update'
@@ -9,7 +9,7 @@ tag: 'vue', 'el-update'
 默认会发送相应次数的请求，这样一来就会导致最终只有一张图片路径被记录到数据库。
 
 # 解决方法
-使用el-upload中的 `http-request` 来自定义上传方法的实现，以 `FormData` 的形式进行上传。
+使用el-upload中的 `http-request` 来自定义上传方法的实现，以 `FormData` 的形式进行上传，图片和参数分开处理。
 ## 前端处理：
 ```html
 <!-- template部分 -->
@@ -37,7 +37,7 @@ tag: 'vue', 'el-update'
 export default {
   data() {
     return {
-      formData: new FormData(),
+      formData: new FormData(),//初始化表单数据对象
       dataForm: { reportContent: '', reportAddress: '', id: '', orderId: ''},
     }
   },
@@ -52,7 +52,7 @@ export default {
       this.formData.append('wp', JSON.stringify(this.dataForm));
       this.$refs.upload.submit();
       let config = { headers: {'Content-Type': 'multipart/form-data'} };//指定表单类型提交
-      this.$http.post('/recCode/upfile', this.formData, config).then(resp=>{
+      this.$http.post('/upfile', this.formData, config).then(resp=>{
         //上传成功后的逻辑
         ...
       }).catch(e=>{console.log(e)})
@@ -61,7 +61,11 @@ export default {
 }
 ```
 ## 服务端处理
+1. 如果前端传的是对象：  
 服务端直接从request中取出FormData中的对象参数，取出来的是json串，使用JSONObject解析。
+
+2. 如果前端传的是单个的参数：  
+服务端可以直接使用对应类型的参数+@RequestParam进行接收。
 
 ```java
 import net.sf.json.JSONObject;
