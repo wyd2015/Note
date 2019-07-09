@@ -10,7 +10,7 @@ tag: pom.xml
 
 怎么减小体积呢？把项目的jar包提取出来就可以大幅度减小jar包体积，在执行jar包只需要
 加一个参数：指定依赖jar包的位置即可。
-`java -Dloader-path=/home/trs/libs -jar *.jar` 
+`java -Dloader-path=/home/libs -jar *.jar` 
 
 # 具体实现：
 1. pom.xml文件修改配置，导出所有依赖的jar包到/target下的指定目录里
@@ -27,7 +27,178 @@ tag: pom.xml
   </plugin>
 </plugins>
 ```
-2. 在项目根目录下执行命令：`mvn dependency: copy-dependencies`，将所有依赖的jar包提取到/target/lib目录下；
+2. 在项目根目录下执行命令：`mvn dependency: copy-dependencies`，将所有依赖的jar包提取到/target/lib目录下，项目所有依赖如下；
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-dbcp</artifactId>
+    <version>8.5.9</version>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.geronimo.components</groupId>
+    <artifactId>geronimo-jaspi</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.3.3</version>
+  </dependency>
+  <dependency>
+    <groupId>commons-net</groupId>
+    <artifactId>commons-net</artifactId>
+    <version>3.6</version>
+  </dependency>
+  <dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+  </dependency>
+  <dependency>
+    <groupId>uk.org.lidalia</groupId>
+    <artifactId>sysout-over-slf4j</artifactId>
+    <version>1.0.2</version>
+  </dependency>
+  <dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>${mybatis.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>1.3.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-autoconfigure</artifactId>
+    <version>1.2.0</version>
+  </dependency>
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpasyncclient</artifactId>
+    <version>4.1</version>
+  </dependency>
+  <dependency>
+    <groupId>net.sf.json-lib</groupId>
+    <artifactId>json-lib</artifactId>
+    <version>2.4</version>
+    <classifier>jdk15</classifier>
+  </dependency>
+  <dependency>
+    <groupId>jdom</groupId>
+    <artifactId>jdom</artifactId>
+    <version>1.0</version>
+  </dependency>
+  <dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>mailapi</artifactId>
+    <version>1.6.0</version>
+  </dependency>
+  <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+  </dependency>
+  <dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.1.14</version>
+  </dependency>
+  <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <scope>provided</scope>
+  </dependency>
+  <dependency>
+    <groupId>org.jfree</groupId>
+    <artifactId>jfreechart</artifactId>
+    <version>1.5.0</version>
+  </dependency>
+  <dependency>
+    <groupId>com.trs</groupId>
+    <artifactId>trs-util</artifactId>
+    <version>[0.2.3,2.0.0)</version>
+  </dependency>
+  <dependency>
+    <groupId>com.trs</groupId>
+    <artifactId>trs-cache</artifactId>
+    <version>[0.0.3,2.0.0)</version>
+  </dependency>
+  <dependency>
+    <groupId>com.trs</groupId>
+    <artifactId>trs-report</artifactId>
+    <version>[0.1.0,2.0.0)</version>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-test</artifactId>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>net.minidev</groupId>
+    <artifactId>asm</artifactId>
+    <version>1.0.2</version>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>com.trs</groupId>
+    <artifactId>trshybase-api</artifactId>
+    <version>8.0.8040-20170607-r25339</version>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.3</version>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.1</version>
+  </dependency>
+  <dependency>
+    <groupId>com.google.protobuf</groupId>
+    <artifactId>protobuf-java</artifactId>
+    <version>3.3.1</version>
+  </dependency>
+  <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>19.0</version>
+  </dependency>
+  <dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>1.11.3</version>
+  </dependency>
+</dependencies>
+```
 
 3. 继续修改pom.xml文件里的<plugins>配置:
 ```xml
@@ -110,7 +281,7 @@ tag: pom.xml
 ![](img/lib.png)
 
 如果添加号 `excludeGroupIds` 的内容后，可以打包试一下，看看`/BOOT-INF/lib`目录下
-是否还存在jar包，有的话就把这个jar报的groupId添加到pom.xml文件中。
+是否还存在jar包，有的话就把这个jar包的groupId添加到pom.xml文件中。
 
 
-最终减肥后的jar包大小为 456Kb！！！+
+最终减肥后的jar包大小为 456Kb！！！
