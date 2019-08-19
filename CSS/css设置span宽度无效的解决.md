@@ -5,7 +5,7 @@
 > span是内联元素，并不是一个实际意义上的块级元素，需要设置display: block/inlie-block; 等样式，
 > 将span变成块级元素后，设置的宽高才能生效。
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
