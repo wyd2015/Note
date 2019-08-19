@@ -28,7 +28,7 @@ JVM何时启动？
 在这种抽象区域里，  
 - **方法区**：主要存放`类信息`、`常量`、`static变量`、`JIT` （信息共享）；
 - **Java堆区**：主要存放`实例对象`、`GC`  （信息共享）；
-- **VM Stack**：Java方法在运行时的内存模型；
+- **VM Stack**：Java方法在运行时的内存模型；  
 ![vmStack](img/vmStack.png)
 - **Program Counter**：程序计数器，属于线程的私有数据，保存的是线程待执行的下一条指令的地址；
 - **Native Method Stack**：本地方法栈，与JVM的native method有关。
@@ -142,6 +142,6 @@ synchronization代码块也可保证代码块中的所有变量都会从主存�
 
 在jvm中，如果一个操作执行的结果需要对另一个操作可见，那么这两个操作之间必需要存在`happens-before`的关系，这样的两个操作既可以在同一个线程，也可以在2个不同的线程中。
 
-[【参考资料】]()：  
+【参考资料】：  
 - [全面理解Java内存模型](https://blog.csdn.net/suifeng3051/article/details/52611310)
 - [深入理解 Java 内存模型（一）——基础](https://infoq.cn/article/java-memory-model-1)

@@ -1,5 +1,5 @@
 ---
-title: '''Git传本地项目'''
+title: 'Git传本地项目'
 date: 2018-10-13 17:39:51
 categories: Git
 tags: git
@@ -19,17 +19,17 @@ tags: git
 
 ![本地项目上传到github](./img/本地项目上传到github.png)
 
-在执行第6步时出错：  
->E:\LanTest\GitRepository\sb_begin (master -> origin)  
->$ git pull origin master  
->From https://github.com/wyd2015/springboot_group  
-> \* branch            master     -> FETCH_HEAD  
+在执行第6步时出错：
+>E:\LanTest\GitRepository\sb_begin (master -> origin)
+>$ git pull origin master
+>From https://github.com/wyd2015/springboot_group
+> \* branch            master     -> FETCH_HEAD
 >`fatal: refusing to merge unrelated histories`
 
-**出错原因**:  
+**出错原因**:
 远程仓库和本地的仓库没有一个共同的`commit标识符`，Git不让提交，git认为使用者写错了代码来源（`origin`），如果使用者确定是这个origin，可以在`git pull origin master`后面添加`--allow-unrelated-histories`，告诉git，此次的`commit标识符`由使用者自己确定。
 
-**解决办法**:  
-使用下面的命令进行pull操作：  
-`git pull origin master --allow-unrelated-histories`  
+**解决办法**:
+使用下面的命令进行pull操作：
+`git pull origin master --allow-unrelated-histories`
 ![pull](img/pull.png)
