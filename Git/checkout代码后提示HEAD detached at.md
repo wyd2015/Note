@@ -1,8 +1,8 @@
 ---
-title: '''Git报错 HEAD detached at ...'''
+title: Git报错 HEAD detached at ...
 date: 2018-11-09 17:39:51
 categories: Git
-tags: git
+toc: true
 ---
 # checkout代码后进行pull操作，提示HEAD detached at
 
