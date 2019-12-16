@@ -86,7 +86,7 @@ categories: Linux
   [kfz@web-srv ~]$ printf %x 12120
   2f58
   ```
-4. 定位代码位置
+4. 定位代码位置：`sudo -u root jstack 进程号 | grep -A 200 线程的16进制ID号`
   ```sh
   [kfz@web-srv ~]$ sudo -u root /usr/java/jdk1.8.0_11/bin/jstack 29151 | grep -A 200 2f58
   [sudo] password for kfz: 
