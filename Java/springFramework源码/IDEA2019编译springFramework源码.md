@@ -1,4 +1,17 @@
-# IDEA编译spring源码
+---
+title: 'IDEA2019.3编译spring-framework_5.1.x'
+categories: spring
+tag: 'spring','gradle'
+---
+# IDEA2019.3编译spring-framework_5.1.x
+本文中使用的编译环境：
+>- aspectj_1.9.5.jar
+>- JDK_1.8.0_231
+>- IDEA_2019.3
+>- Gradle_5.5.1
+
+这里需要特别说明一下：gradle版本不能随便用，`spring—_5.1.x` 默认使用 `gradle_4.10.3`版本，但实测该版本在构建的最后阶段会报错，使用`gradle_6.1`版本构建初期就会报错终止构建。看网上构建 `spring—_5.1.x` 成功的用的都是`gradle_5.x`，因此就换成`gradle_5.5.1`版本，成功完成构建、编译的操作。
+>
 ## 1. 从[spring-framework](https://github.com/spring-projects/spring-framework)的github仓库中拷贝项目地址
 `https://github.com/spring-projects/spring-framework.git`
 ## 2. IDEA选择从git导入新项目
@@ -43,7 +56,7 @@
   ![](img/compileKotlin.png)
 
 - 找到`spring-framework\spring-core-coroutines\build\libs`下面的`spring-core-coroutines-5.2.0.BUILD-SNAPSHOT.jar`；
--
+
 - 选中jar包，右键现在`Add as Library`，将jar包导入依赖；
   ![](img/coroutines.png)
 
@@ -51,3 +64,8 @@
   ![](img/createLib.png)
 
 - 选中工具栏`Build`—> `Rebuild Project`，重新构建项目。
+
+## 6. 测试时报错：找不到InstrumentationSavingAgent
+引用的模块对应的spring-*.gradle中，找到`optional(project(":spring-instrument"))`，并将`optional`改成`compile`，然后重新构建即可。
+![](img/optional.png)
+此处我将`optional`改为`compile`后重新build，报错消失，然后重新将`compile`换为`optional`后，也不会再报错了！
