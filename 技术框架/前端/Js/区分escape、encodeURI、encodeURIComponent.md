@@ -6,4 +6,5 @@
 其中，`ASCII、数字、@&/+`，这几个字符串不会被编码，其余的都会。  
 2. encodeURI、encodeURIComponent是针对URL编码，它们俩的区别在于编码的字符范围不同：
 >encodeURI方法不会对下列字符编码：ASCII字母、数字、~!@#$&*()=:/,;?+'  
->encodeURIComponent方法不会对下列字符编码：ASCII字母、数字、~!*()'
+encodeURIComponent方法不会对下列字符编码：ASCII字母、数字、~!*()'
+
