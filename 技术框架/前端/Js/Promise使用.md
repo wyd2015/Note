@@ -10,7 +10,7 @@ js代码如下：
 clickMergeBtn(){
   this.isMergedToOtherSubject(this.boxGroup).then((mergeState)=>{
     if(mergeState){
-      this.$Message.error({content: "所选事件均已存在于其它专题下，不能执行该操作！", duration: 3, closable: false});
+      this.$Message.error({content: "不能执行该操作！", duration: 3, closable: false});
       return;
     }
     this.margeSubject = true; // 弹出合并对话框
