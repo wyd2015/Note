@@ -5,10 +5,10 @@
 1. 注册阿里云账号；
 
 2. 登录阿里云账号，并创建镜像仓库；
-   ![image-20200404170306103](C:\Users\wyd79\AppData\Roaming\Typora\typora-user-images\image-20200404170306103.png)
+   ![image-20200404170306103](img\image-20200404170306103.png)
 
 3. 镜像仓库创建好后，在`镜像加速器`复制配置代码；
-   ![image-20200404170544663](C:\Users\wyd79\AppData\Roaming\Typora\typora-user-images\image-20200404170544663.png)
+   ![image-20200404170544663](img\image-20200404170544663.png)
 
 4. 在`centos7`中执行命令：
 
@@ -217,7 +217,7 @@
    docker ps
    ```
 
-   ![image-20200404172858589](C:\Users\wyd79\AppData\Roaming\Typora\typora-user-images\image-20200404172858589.png)
+   ![image-20200404172858589](img\image-20200404172858589.png)
 
 2. 进入容器
 
@@ -226,7 +226,7 @@
    docker exec -it 24 /bin/bash
    ```
 
-   ![image-20200404173124509](C:\Users\wyd79\AppData\Roaming\Typora\typora-user-images\image-20200404173124509.png)
+   ![image-20200404173124509](img\image-20200404173124509.png)
 
 3. 登录`mysql`
 
@@ -234,6 +234,6 @@
    mysql -uroot -p123456
    ```
 
-   ![image-20200404173244463](C:\Users\wyd79\AppData\Roaming\Typora\typora-user-images\image-20200404173244463.png)
+   ![image-20200404173244463](img\image-20200404173244463.png)
 
 ## 4. 完成安装，可以使用Navicat登录了！
