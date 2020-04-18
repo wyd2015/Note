@@ -18,7 +18,21 @@ LoadModule headers_module modules/mod_headers.so
 ```
 4. 在独立`Virtual Host`节点下添加一行配置：
 ```yml
-Header set Access-Control-Allow-Origin *
+<Directory "/home/trs/yqzx-web/test/dist">
+  Options Indexes FollowSymLinks
+  Header set Access-Control-Allow-Origin *
+  AllowOverride None
+  Order allow,deny
+  Allow from all
+  <IfModule rewrite_module>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+  </IfModule>
+</Directory>
 ```
 5. 保存更改；
 6. 重启Apache服务。
