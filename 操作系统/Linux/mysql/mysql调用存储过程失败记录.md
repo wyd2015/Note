@@ -1,4 +1,4 @@
-# springboot调用MySQL存储过程出错记录
+# pringboot调用MySQL存储过程出错记录
 
 ## 错误的大致描述：
 1. 使用`root`账户`创建`存储过程；
