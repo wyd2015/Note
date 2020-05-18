@@ -80,14 +80,13 @@ linux平台客户端在`./bin/`目录—`ngrok`
 `GOOS`：客户端程序运行的的操作系统 （windows，linux，darwin）；
 
 `GOARCH`：操作系统对应的系统架构（386、amd64、arm）。
-
-- Linux 平台 32 位系统：GOOS=linux GOARCH=386
-- Linux 平台 64 位系统：GOOS=linux GOARCH=amd64
-- Windows 平台 32 位系统：GOOS=windows GOARCH=386
-- Windows 平台 64 位系统：GOOS=windows GOARCH=amd64
-- MAC 平台 32 位系统：GOOS=darwin GOARCH=386
-- MAC 平台 64 位系统：GOOS=darwin GOARCH=amd64
-- ARM 平台：GOOS=linux GOARCH=arm
+> - Linux 平台 32 位系统：GOOS=linux GOARCH=386
+> - Linux 平台 64 位系统：GOOS=linux GOARCH=amd64
+> - Windows 平台 32 位系统：GOOS=windows GOARCH=386
+> - Windows 平台 64 位系统：GOOS=windows GOARCH=amd64
+> - MAC 平台 32 位系统：GOOS=darwin GOARCH=386
+> - MAC 平台 64 位系统：GOOS=darwin GOARCH=amd64
+> - ARM 平台：GOOS=linux GOARCH=arm
 
 ### 6、配置ngrok服务端
 
@@ -190,6 +189,7 @@ ngrok           0:off   1:off   2:on    3:on    4:on    5:on    6:off
 #### 10.1、 新建`ngrok`文件夹
 
 我选择了在`C:\Programs\ngrok`路径，然后将第5步生成的客户端程序`ngrok.exe`拷贝到此目录下；
+
 ![image-20200518225616104](img/image-20200518225616104.png)
 
 #### 10.2、新建`ngrok.cfg`配置文件
@@ -205,7 +205,7 @@ trust_host_root_certs: false
 tunnels:
   # 配置win10远程桌面连接
   mstsc:
-    remote_port: 3389      
+    remote_port: 3389
     proto:
       tcp: "127.0.0.1:3389"
 ```
@@ -221,6 +221,7 @@ ngrok -config=ngrok.cfg start mstsc
 #### 10.4、双击`start.bat`启动脚本
 
 启动成功会显示如下：
+
 ![](./img/image-20200518223450079.png)
 
 #### 10.5、设置win10下开机自启
@@ -228,11 +229,12 @@ ngrok -config=ngrok.cfg start mstsc
 1. 新建文件`ngrok.vbs`，内容如下：
 
    ```bash
-   set ws=WScript.CreateObject("WScript.Shell") 
-   ws.Run "C:\Programs\ngrok\start.bat /start",0 
+   set ws=WScript.CreateObject("WScript.Shell")
+   ws.Run "C:\Programs\ngrok\start.bat /start",0
    ```
 
 2. 将`ngrok.vbs`放到`C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`下
+
    ![image-20200518225100839](img/image-20200518225100839.png)
 
 > 这里可以有两个位置客可放：
@@ -278,13 +280,13 @@ tunnels:
     subdomain: www
     proto:
       http: 80
-  
+
   # 配置http连接
   https:
     subdomain: www
     proto:
       https: 81
-  
+
   # 配置ssh连接
   ssh:
     remote_port: 8022
@@ -338,11 +340,15 @@ tunnels:
 这里演示Android手机端ssh连接树莓派，连接工具：`JuiceSSH`。
 
 1. 新建SSH连接，因为我已经建好了，所以这里展示的是更新界面：
+
    ![](img/create-ssh.jpg)
 
 2. `认证`一项里，选择`新建认证`，认证就是填写树莓派的登录账号及对应密码，这里登录pi账号演示：
+
    ![](img/auth-ssh.jpg)
-3. 配置完成，等进来看看吧！
+
+3. 配置完成，登进来看看吧！
+
    ![](img/raspberry-ssh.jpg)
 
 ### 12、查看VPS正在运行的服务
@@ -355,10 +361,3 @@ tcp6    0    0 :::3100       :::*      LISTEN      2998/ngrokd
 tcp6    0    0 :::3389       :::*      LISTEN      2998/ngrokd
 tcp6    0    0 :::3200       :::*      LISTEN      2998/ngrokd
 ```
-
-
-
-
-
-
-
