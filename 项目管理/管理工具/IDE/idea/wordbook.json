@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "word": "skeleton",
+    "sourceLanguage": "en",
+    "targetLanguage": "zh-CN",
+    "phonetic": "ˈskelitn",
+    "explanation": "骨架\n\n名词: 骨架; 骨骼; 骨; 骷; 骸; 骼; 骨头架子; 尸骨",
+    "tags": [],
+    "createdAt": 1579594604666
+  },
+  {
+    "id": 2,
+    "word": "Candidate",
+    "sourceLanguage": "en",
+    "targetLanguage": "zh-CN",
+    "phonetic": "-dit,ˈkandiˌdāt",
+    "explanation": "候选人\n\n名词: 候选人",
+    "tags": [],
+    "createdAt": 1587643099477
+  },
+  {
+    "id": 3,
+    "word": "Canonical",
+    "sourceLanguage": "en",
+    "targetLanguage": "zh-CN",
+    "explanation": "典范\n\n形容词: 典范; 法服; 轮唱的",
+    "tags": [],
+    "createdAt": 1587643145418
+  }
+]
