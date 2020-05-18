@@ -65,18 +65,20 @@ int pthread_cancel(pthread_t thread);
  */
 int pthread_join(pthread_t threadid, void *value_ptr);
 ```
-**僵尸线程**： 已经退出了 joinable 状态的线程，但还在等待其它线程调用 pthread_join 来 join阻塞它，以收集
-它的退出信息。如果没有其他线程调用 pthread_join方法来阻塞它的话，被它占用的系统资源不会被释放，比如堆栈。  
-如果main函数需要长时间运行，且创建pthread_detach，这样等它运行结束，资源就会得到释放。  
->一个线程被使用 pthread_detach处理后，就不能再被改成 joinable 状态了。  
-总之，被创建的线程都应该使用 pthread_join 或 pthread_detach 处理掉，防止出现僵尸线程。
+**僵尸线程**： 已经退出了 `joinable `状态的线程，但还在等待其它线程调用 `pthread_join `来 join阻塞它，以收集
+它的退出信息。如果没有其他线程调用 `pthread_join`方法来阻塞它的话，被它占用的系统资源不会被释放，比如堆栈。  
+如果main函数需要长时间运行，且创建`pthread_detach`，这样等它运行结束，资源就会得到释放。  
+
+>一个线程被使用 `pthread_detach`处理后，就不能再被改成 `joinable` 状态了。  
+总之，被创建的线程都应该使用 `pthread_join `或 `pthread_detach `处理掉，防止出现僵尸线程。
 ```c
 pthread_detach (threadid)
 pthread_attr_setdetachstate (attr,detachstate)
 pthread_attr_getdetachstate (attr,detachstate)
 ```
 ## 堆栈管理
-POSIX标准没有规定一个线程的堆栈大小. 安全可移植的程序不会依赖于具体实现默认的堆栈限制，而是显式地调用 pthread_attr_setstacksize 来分配足够的堆栈空间.
+`POSIX`标准没有规定一个线程的堆栈大小. 安全可移植的程序不会依赖于具体实现默认的堆栈限制，而是显式地调用 `pthread_attr_setstacksize `来分配足够的堆栈空间.
+
 ```c
 pthread_attr_getstacksize (attr, stacksize)
 pthread_attr_setstacksize (attr, stacksize)
@@ -92,24 +94,24 @@ pthread_self ();
 pthread_equal (thread1,thread2);
 ```
 
-# 互斥锁 Mutex
-## Mutex作用
-Mutex常被用来保护那些可以被多个线程访问的共享资源。
+# 互斥锁 `Mutex`
+## `Mutex`作用
+`Mutex`常被用来保护那些可以被多个线程访问的共享资源。
+
 ## 使用方法
-1. 创建一个互斥锁，即声明一个 pthread_mutex_t 类型的数据，然后初始化，只有初始化之后才能使用；
+1. 创建一个互斥锁，即声明一个 `pthread_mutex_t `类型的数据，然后初始化，只有初始化之后才能使用；
 2. 多个线程尝试锁定这个互斥锁；
 3. 只有一个成功锁定互斥锁，成为互斥锁的拥有者，然后进行一些指令操作；
 4. 拥有者释放互斥锁；
 5. 其他线程尝试锁定互斥锁，重复上面的3~4过程；
-6. 最后互斥锁被显式调用 pthread_mutex_destroy来销毁。
+6. 最后互斥锁被显式调用 `pthread_mutex_destroy`来销毁。
 
 ## 初始化互斥锁的两种方式
 ### 1. 利用已经定义的常量进行初始化
 ```c
 pthread_mutex_t clock = PTHREAD_MUTEX_INITIALIZER;
 ```
-### 2. 调用 pthread_mutex_init(mutex, attr)函数进行初始化
-当多个线程同时尝试锁定一个互斥锁时，失败的那些线程，如果是用 pthread_mutex_lock 函数，那它会被阻塞，
-直到这个互斥锁被释放，它们再继续竞争；
+### 2. 调用 `pthread_mutex_init`(`mutex`, `attr`)函数进行初始化
+当多个线程同时尝试锁定一个互斥锁时，失败的那些线程，如果是用 `pthread_mutex_lock `函数，那它会被阻塞，直到这个互斥锁被释放，它们再继续竞争；
 
-如果是用 pthread_mutex_trylock函数，那么失败者只会返回一个错误。
+如果是用 `pthread_mutex_trylock`函数，那么失败者只会返回一个错误。
